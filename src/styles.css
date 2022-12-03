@@ -1,1 +1,28 @@
 /* You can add global styles to this file, and also import other style files */
+a {
+    color: #98da8f;
+    text-decoration: none;
+    background-color: transparent;
+  }
+
+  a:hover {
+    color: #99d491;
+    text-decoration: underline;
+  }
+
+/* .bg-primary {
+    background-color: #99d491 !important;
+}
+.bg-primary.btn:hover {
+    border-color: #99d491 !important;
+}
+
+.btn:focus, .btn:focus {
+    outline: 0;
+} */
+
+/* a.bg-primary:hover, a.bg-primary:focus,
+button.bg-primary:hover,
+button.bg-primary:focus {
+  background-color: #afdca9 !important;
+} */
