@@ -1,0 +1,16 @@
+.back-to-top {
+  position: fixed;
+  right: 30px;
+  bottom: 30px;
+  z-index: 11;
+  animation: action 1s infinite alternate;
+}
+
+@keyframes action {
+  0% {
+    transform: translateY(0);
+  }
+  100% {
+    transform: translateY(-15px);
+  }
+}
