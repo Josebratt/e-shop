@@ -7,6 +7,8 @@ import { AdminComponent } from './admin/admin.component';
 import { NavbarComponent } from './shared/navbar/navbar.component';
 import { SidebarComponent } from './shared/sidebar/sidebar.component';
 import { FooterComponent } from './shared/footer/footer.component';
+import { ListComponent } from './pages/categories/list/list.component';
+import { AddComponent } from './pages/categories/add/add.component';
 
 
 @NgModule({
@@ -14,7 +16,9 @@ import { FooterComponent } from './shared/footer/footer.component';
     AdminComponent,
     NavbarComponent,
     SidebarComponent,
-    FooterComponent
+    FooterComponent,
+    ListComponent,
+    AddComponent
   ],
   imports: [
     CommonModule,
