@@ -9,6 +9,7 @@ import { SidebarComponent } from './shared/sidebar/sidebar.component';
 import { FooterComponent } from './shared/footer/footer.component';
 import { ListComponent } from './pages/categories/list/list.component';
 import { AddComponent } from './pages/categories/add/add.component';
+import { ShowComponent } from './pages/products/show/show.component';
 
 
 @NgModule({
@@ -18,7 +19,8 @@ import { AddComponent } from './pages/categories/add/add.component';
     SidebarComponent,
     FooterComponent,
     ListComponent,
-    AddComponent
+    AddComponent,
+    ShowComponent
   ],
   imports: [
     CommonModule,
