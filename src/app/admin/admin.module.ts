@@ -10,6 +10,7 @@ import { FooterComponent } from './shared/footer/footer.component';
 import { ListComponent } from './pages/categories/list/list.component';
 import { AddComponent } from './pages/categories/add/add.component';
 import { ShowComponent } from './pages/products/show/show.component';
+import { DashboardComponent } from './pages/dashboard/dashboard.component';
 
 
 @NgModule({
@@ -20,7 +21,8 @@ import { ShowComponent } from './pages/products/show/show.component';
     FooterComponent,
     ListComponent,
     AddComponent,
-    ShowComponent
+    ShowComponent,
+    DashboardComponent
   ],
   imports: [
     CommonModule,
