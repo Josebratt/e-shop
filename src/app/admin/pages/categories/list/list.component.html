@@ -1,1 +1,97 @@
-<p>list works!</p>
+<div class="content-header">
+    <div class="container-fluid">
+      <div class="row mb-2">
+        <div class="col-sm-6">
+          <h1 class="m-0">Lista de Categorias</h1>
+        </div>
+        <div class="col-sm-6">
+          <ol class="breadcrumb float-sm-right">
+            <li class="breadcrumb-item"><a routerLink="/admin">Admin</a></li>
+            <li class="breadcrumb-item active" routerLink="/admin/category">
+              Categorias
+            </li>
+          </ol>
+        </div>
+      </div>
+    </div>
+  </div>
+  <section class="content">
+    <div class="container-fluid">
+      <div class="row">
+        <div class="col-12">
+          <div class="card">
+            <div class="card-header">
+              <div class="row">  
+                <div class="col-md-12">
+                  <button
+                    type="button"
+                    class="btn btn-primary btn-sm float-sm-right"
+                    routerLink="/admin/category/add"
+                  >
+                  <i class="fas fa-plus"></i>
+                    Nuevo
+                  </button>
+                </div>
+              </div>
+            </div>
+            <div class="card-body table-responsive p-0">
+              <table
+                #table1
+                class="table table-hover text-nowrap table-sm table-bordered"
+              >
+                <thead>
+                  <tr>
+                    <th _ngcontent-c23="" style="width: 8%">ID</th>
+                    <th _ngcontent-c23="">Nombre</th>
+                    <th style="width: 15%"></th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr
+                    *ngFor="
+                      let category of categories
+                      let i = index; 
+                    "
+                  >
+                    <td _ngcontent-c23="">{{ i + 1 }}</td>
+                    <td _ngcontent-c23="">{{ category.name }}</td>
+                    <td>
+                      <div class="float-sm-right">
+                        <!-- <button type="button" class="btn btn-flat btn-success btn-sm mr-1">
+                                                  <i class="nav-icon fas fa-eye"></i>
+                                              </button> -->
+                        <button
+                          type="button"
+                          class="btn btn-flat btn-primary btn-sm mr-1"
+                        >
+                          <i
+                            class="nav-icon fas fa-pencil-alt"
+                            (click)="onUpdate(category.id!)"
+                          ></i>
+                        </button>
+                        <button
+                          type="button"
+                          class="btn btn-flat btn-danger btn-sm"
+                        >
+                          <i
+                            class="nav-icon fas fa-trash"
+                            (click)="onDelete(category.id!)"
+                          ></i>
+                        </button>
+                      </div>
+                    </td>
+                  </tr>
+                </tbody>
+              </table>
+              <div class="card-footer ">
+                <!-- <pagination-controls class="float-sm-right"
+                  (pageChange)="page = $event"
+                ></pagination-controls> -->
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+  
