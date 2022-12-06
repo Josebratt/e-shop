@@ -5,6 +5,9 @@ import { AdminComponent } from './admin/admin.component';
 import { AddComponent } from './pages/categories/add/add.component';
 import { ListComponent } from './pages/categories/list/list.component';
 import { DashboardComponent } from './pages/dashboard/dashboard.component';
+import { AddProductComponent } from './pages/products/add/add.component';
+import { ListProductComponent } from './pages/products/list/list.component';
+import { ShowProductComponent } from './pages/products/show/show.component';
 
 export const routes: Routes = [
   {
@@ -15,10 +18,10 @@ export const routes: Routes = [
       { path: 'category', component: ListComponent },
       { path: 'category/add', component: AddComponent },
       { path: 'category/add/:id', component: AddComponent },
-    //   { path: 'product', component: ListProductComponent },
-    //   { path: 'product/add', component: AddProductComponent },
-    //   { path: 'product/add/:id', component: AddProductComponent },
-    //   { path: 'product/show/:id', component: ShowProductComponent }
+      { path: 'product', component: ListProductComponent},
+      { path: 'product/add', component: AddProductComponent },
+      { path: 'product/add/:id', component: AddProductComponent },
+      { path: 'product/show/:id', component: ShowProductComponent }
     ]
   },
 ];
