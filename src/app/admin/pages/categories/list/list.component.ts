@@ -18,7 +18,7 @@ export class ListComponent implements OnInit {
   ) { }
 
   ngOnInit(): void {
-    this._getCategories();
+    this._getCategories();    
   }
 
   ngOnDestroy(): void {
@@ -28,7 +28,18 @@ export class ListComponent implements OnInit {
 
   private _getCategories() {
     this.categoryService.getCategories().pipe(takeUntil(this.endsubs$)).subscribe(
-      (data) => { this.categories = data }
+      (data) => { this.categories = data;
+        setTimeout(()=>{   
+          $('#table').DataTable( {
+            pagingType: 'full_numbers',
+            pageLength: 5,
+            processing: true,
+            lengthMenu : [5, 10, 25],
+            dom: 'Bfrtip'
+        } );
+        }, 1);
+      }
+      // , error => console.error(error)
     )
   }
 

@@ -1,6 +1,8 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 
+import {DataTablesModule} from 'angular-datatables';
+
 import { AdminRoutingModule } from './admin.routes';
 
 import { AdminComponent } from './admin/admin.component';
@@ -26,6 +28,7 @@ import { DashboardComponent } from './pages/dashboard/dashboard.component';
   ],
   imports: [
     CommonModule,
+    DataTablesModule,
     AdminRoutingModule
   ]
 })
