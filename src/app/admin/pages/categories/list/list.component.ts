@@ -69,15 +69,16 @@ export class ListComponent implements OnInit, OnDestroy {
       confirmButtonText: 'Si, borralo!',
     }).then((result) => {
       if (result.isConfirmed) {
-        this.categoryService.deleteCategory(id).pipe(takeUntil(this.endsubs$)).subscribe(
-          (data) => {
+        this.categoryService.deleteCategory(id).pipe(takeUntil(this.endsubs$)).subscribe({
+          next: (data) => {
             this._getCategories();
-            this.refresh();
             if (data) {
-              Swal.fire('Borrado!', 'La categoria ha sido borrado', 'success');
+              Swal.fire('Borrado!', `La categoria ${data.name} ha sido guardada`, 'success');
             }
-          }
-        )
+            this.refresh();
+          },
+          error: (error) => console.error(error)
+      })
       }
     });
   }
