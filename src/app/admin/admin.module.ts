@@ -13,6 +13,7 @@ import { ListComponent } from './pages/categories/list/list.component';
 import { AddComponent } from './pages/categories/add/add.component';
 import { ShowComponent } from './pages/products/show/show.component';
 import { DashboardComponent } from './pages/dashboard/dashboard.component';
+import { ReactiveFormsModule } from '@angular/forms';
 
 
 @NgModule({
@@ -28,6 +29,7 @@ import { DashboardComponent } from './pages/dashboard/dashboard.component';
   ],
   imports: [
     CommonModule,
+    ReactiveFormsModule,
     DataTablesModule,
     AdminRoutingModule
   ]
