@@ -15,3 +15,74 @@
         </div>
     </div>
 </div>
+<section class="content">
+    <div class="container-fluid">
+      <div class="row">
+        <div class="col-12">
+          <div class="card">
+            <div class="card-header">
+              <div class="row">
+                <div class="col-md-12">
+                  <button type="button" class="btn btn-primary btn-sm float-sm-right" routerLink="/admin/product/add">
+                    <i class="fas fa-plus"></i>
+                    Nuevo
+                  </button>
+                </div>
+                <div class="col-md-12 mt-2">
+                </div>
+              </div>
+            </div>
+            <div class="card-body table-responsive p-2">
+              <table id="datatable" class="table table-sm table-hover table-bordered  text-nowrap">
+                <thead>
+                  <tr>
+                    <th>ID</th>
+                    <th style="width: 8%">Sku</th>
+                    <th>Nombre</th>
+                    <th>Marca</th>
+                    <th>
+                      Categoria
+                    </th>
+                    <th style="visibility: collapse; display: none">P. Compra</th>
+                    <th>Cantidad</th>
+                    <th>P. Venta</th>
+                    <th style="width: 15%"></th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr *ngFor="
+                      let product of products;
+                      let i = index
+                    ">
+                    <td>{{ i + 1 }}</td>
+                    <td>{{ product.sku }}</td>
+                    <td>{{ product.name }}</td>
+                    <td>{{ product.brand }}</td>
+                    <td>
+                      {{ product.category.name }}
+                    </td>
+                    <td style="visibility: collapse; display: none">{{ product.priceBuy }}</td>
+                    <td>{{ product.countInStock }}</td>
+                    <td>{{ product.priceSell }}</td>
+                    <td>
+                      <div class="float-sm-right">
+                        <button type="button" class="btn btn-success btn-sm mr-1" routerLink="/admin/product/show">
+                          <i class="nav-icon fas fa-eye" (click)="onShow(product.id!)"></i>
+                        </button>
+                        <button type="button" class="btn btn-primary btn-sm mr-1">
+                          <i class="nav-icon fas fa-pencil-alt" (click)="onUpdate(product.id!)"></i>
+                        </button>
+                        <button type="button" class="btn btn-danger btn-sm">
+                          <i class="nav-icon fas fa-trash" (click)="onDelete(product.id!)"></i>
+                        </button>
+                      </div>
+                    </td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
