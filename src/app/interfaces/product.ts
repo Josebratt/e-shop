@@ -4,8 +4,8 @@ export interface Product {
     id?: string;
     sku: string;
     name: string;
-    image?: string;
-    cloudinaryId?: string;
+    image: string;
+    cloudinary_id?: string;
     category: Category;
     brand?: string;
     priceBuy?: string;

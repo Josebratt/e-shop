@@ -47,8 +47,10 @@ export class ProductService {
    * @param productData 
    * @returns 
    */
-  updateProduct(id: string, productData: FormData): Observable<Product> {
-    return this.httpClient.put<Product>(`this.API_URL/${id}`, productData);
+  updateProduct(productData: FormData, id: string): Observable<Product> {
+    console.log('servicio', productData.get('cloudinary_id'));
+    
+    return this.httpClient.put<Product>(`${this.API_URL}/${id}`, productData);
   }
 
   /**
