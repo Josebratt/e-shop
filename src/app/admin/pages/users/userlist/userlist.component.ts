@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { User } from 'src/app/interfaces/user';
 
 @Component({
   selector: 'app-userlist',
@@ -7,9 +8,15 @@ import { Component, OnInit } from '@angular/core';
 })
 export class UserlistComponent implements OnInit {
 
+  users: User[] = [];
+
   constructor() { }
 
   ngOnInit(): void {
+  }
+
+  onUpdate(id: string) {
+    
   }
 
 }
