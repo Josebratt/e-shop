@@ -7,6 +7,7 @@ import { HomeComponent } from './home/home.component';
 import { NavbarComponent } from './shared/navbar/navbar.component';
 import { FooterComponent } from './shared/footer/footer.component';
 import { FeaturesComponent } from './pages/features/features.component';
+import { LoginComponent } from './pages/login/login.component';
 
 
 @NgModule({
@@ -14,7 +15,8 @@ import { FeaturesComponent } from './pages/features/features.component';
     HomeComponent,
     NavbarComponent,
     FooterComponent,
-    FeaturesComponent
+    FeaturesComponent,
+    LoginComponent
   ],
   imports: [
     CommonModule,
