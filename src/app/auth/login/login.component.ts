@@ -1,3 +1,4 @@
+import { LocalstorageService } from './../../services/localstorage.service';
 import { HttpErrorResponse } from '@angular/common/http';
 import { Component, OnInit } from '@angular/core';
 import { AbstractControl, FormBuilder, FormGroup, Validators } from '@angular/forms';
@@ -16,7 +17,8 @@ export class LoginComponent implements OnInit {
 
   constructor(
     private fb: FormBuilder,
-    private authService: AuthService
+    private authService: AuthService,
+    private localStorage: LocalstorageService
   ) { }
 
   ngOnInit(): void {
@@ -38,7 +40,7 @@ export class LoginComponent implements OnInit {
     this.authService.login(this.fc['email'].value, this.fc['password'].value)
      .subscribe({
       next: (data) => {
-       console.log(data);
+       this.localStorage.setToken(data.token);
       },
       error: (error: HttpErrorResponse) => {
         if (error.status === 400) {
