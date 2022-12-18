@@ -17,6 +17,8 @@ import { AddProductComponent } from './pages/products/add/add.component';
 import { ListProductComponent } from './pages/products/list/list.component';
 import { ShowProductComponent } from './pages/products/show/show.component';
 import { DashboardComponent } from './pages/dashboard/dashboard.component';
+import { UserlistComponent } from './pages/users/userlist/userlist.component';
+import { UseraddComponent } from './pages/users/useradd/useradd.component';
 
 
 
@@ -32,7 +34,9 @@ import { DashboardComponent } from './pages/dashboard/dashboard.component';
     ListProductComponent,
     AddProductComponent,
     ShowProductComponent,
-    DashboardComponent
+    DashboardComponent,
+    UserlistComponent,
+    UseraddComponent
   ],
   imports: [
     CommonModule,
