@@ -1,5 +1,6 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
+import { AuthguardGuard } from '../guard/authguard.guard';
 
 import { AdminComponent } from './admin/admin.component';
 import { AddComponent } from './pages/categories/add/add.component';
@@ -13,6 +14,7 @@ export const routes: Routes = [
   {
     path: '',
     component: AdminComponent,
+    canActivate: [AuthguardGuard],
     children: [
       { path: '', component: DashboardComponent },
       { path: 'category', component: ListComponent },

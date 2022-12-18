@@ -4,6 +4,7 @@ import { Component, OnInit } from '@angular/core';
 import { AbstractControl, FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { AuthService } from 'src/app/services/auth.service';
 import Swal from 'sweetalert2';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-login',
@@ -18,7 +19,8 @@ export class LoginComponent implements OnInit {
   constructor(
     private fb: FormBuilder,
     private authService: AuthService,
-    private localStorage: LocalstorageService
+    private localStorage: LocalstorageService,
+    private router: Router
   ) { }
 
   ngOnInit(): void {
@@ -41,6 +43,7 @@ export class LoginComponent implements OnInit {
      .subscribe({
       next: (data) => {
        this.localStorage.setToken(data.token);
+       this.router.navigate(['/']);
       },
       error: (error: HttpErrorResponse) => {
         if (error.status === 400) {
