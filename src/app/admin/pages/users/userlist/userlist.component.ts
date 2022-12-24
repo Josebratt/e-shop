@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
 import { Subject, takeUntil } from 'rxjs';
 import { User } from 'src/app/interfaces/user';
 import { UserService } from 'src/app/services/user.service';
@@ -14,7 +15,8 @@ export class UserlistComponent implements OnInit {
   endsubs$: Subject<unknown> = new Subject();
 
   constructor(
-    private userService: UserService
+    private userService: UserService,
+    private router: Router
   ) { }
 
   ngOnInit(): void {
@@ -44,7 +46,7 @@ export class UserlistComponent implements OnInit {
   }
 
   onUpdate(id: string) {
-
+    this.router.navigateByUrl(`/admin/user/add/${id}`);
   }
 
 }

@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, OnDestroy } from '@angular/core';
 import {
   AbstractControl,
   FormBuilder,
@@ -17,7 +17,7 @@ import Swal from 'sweetalert2';
   templateUrl: './add.component.html',
   styleUrls: ['./add.component.css'],
 })
-export class AddComponent implements OnInit {
+export class AddComponent implements OnInit, OnDestroy {
   form!: FormGroup;
   isSubmited = false;
   editmode = false;

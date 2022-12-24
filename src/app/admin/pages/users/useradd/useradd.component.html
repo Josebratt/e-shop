@@ -1,1 +1,147 @@
-<p>useradd works!</p>
+<div class="content-header">
+    <div class="container-fluid">
+        <div class="row mb-2">
+            <div class="col-sm-6">
+                <h4 *ngIf="!editmode; else edit" class="m-0">Crear Usuario</h4>
+                <ng-template #edit>
+                    <h4 class="m-0">Editar Categoria</h4>
+                </ng-template>
+            </div>
+            <div class="col-sm-6">
+                <ol class="breadcrumb float-sm-right">
+                    <li class="breadcrumb-item"><a routerLink="/admin">Admin</a></li>
+                    <li class="breadcrumb-item">
+                        <a routerLink="/admin/user">Usuario</a>
+                    </li>
+                    <li *ngIf="!editmode; else update" class="breadcrumb-item active" routerLink="/admin/user/add">
+                        Nuevo
+                    </li>
+                    <ng-template #update>
+                        <li class="breadcrumb-item active" routerLink="/admin/user/add">
+                            Actualizar
+                        </li>
+                    </ng-template>
+                </ol>
+            </div>
+        </div>
+    </div>
+</div>
+
+<section class="content">
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-12">
+                <div class="card card-solid">
+                    <div class="card-body">
+                        <form [formGroup]="form">
+                            <div class="row">
+                                <div class="col-12">
+                                    <div class="form-row">
+                                        <div class="col-md-4">
+                                            <div class="form-group">
+                                                <label for="code">Nombres</label>
+                                                <input formControlName="names" type="text" class="form-control"
+                                                    id="names" placeholder="Nombres" />
+                                                <small *ngIf="form.get('names')!.invalid && isSubmited"
+                                                    class="text-danger">El nombre es requerido</small>
+                                            </div>
+                                        </div>
+                                        <div class="col-md-4">
+                                            <div class="form-group">
+                                                <label for="name">Apellidos</label>
+                                                <input formControlName="lastNames" type="text" class="form-control"
+                                                    id="lastNames" placeholder="Apellidos" />
+                                                <small *ngIf="form.get('lastNames')!.invalid && isSubmited"
+                                                    class="text-danger">Los Apellidos son requeridos</small>
+                                            </div>
+                                        </div>
+                                        <div class="col-md-4">
+                                            <div class="form-group">
+                                                <label for="name">Direccion</label>
+                                                <input formControlName="address" type="text" class="form-control"
+                                                    id="address" placeholder="Apellidos" />
+                                                <small *ngIf="form.get('address')!.invalid && isSubmited"
+                                                    class="text-danger">La Direccion es requerido</small>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="form-row">
+                                        <div class="col-md-4">
+                                            <div class="form-group">
+                                                <label for="name">Ciudad</label>
+                                                <input formControlName="city" type="text" class="form-control" id="city"
+                                                    placeholder="Ciudad" />
+                                                <small *ngIf="form.get('city')!.invalid && isSubmited"
+                                                    class="text-danger">La ciudad es requerido</small>
+                                            </div>
+                                        </div>
+                                        <div class="col-md-4">
+                                            <div class="form-group">
+                                                <label for="zip">Codigo postal</label>
+                                                <input formControlName="zip" type="text" class="form-control" id="zip"
+                                                    placeholder="Apellidos" />
+                                                <small *ngIf="form.get('zip')!.invalid && isSubmited"
+                                                    class="text-danger">El codigo postal es requerido</small>
+                                            </div>
+                                        </div>
+                                        <div class="col-md-4">
+                                            <div class="form-group">
+                                                <label for="phone">Telefono</label>
+                                                <input formControlName="phone" type="text" class="form-control"
+                                                    id="phone" placeholder="Telefono" />
+                                                <small *ngIf="form.get('phone')!.invalid && isSubmited"
+                                                    class="text-danger">El telefono es requerido</small>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="form-row">
+                                        <div class="col-md-4">
+                                            <div class="form-group">
+                                                <label for="brand">Email</label>
+                                                <input formControlName="email" type="email" class="form-control"
+                                                    id="email" placeholder="Email" />
+                                                <small *ngIf="form.get('email')!.invalid && isSubmited"
+                                                    class="text-danger">
+                                                    <span *ngIf="form.get('email')!.errors?.['required']">El email es
+                                                        requerido</span>
+                                                    <span *ngIf="form.get('email')!.errors?.['email']">El email es
+                                                        invalido</span>
+                                                </small>
+                                            </div>
+                                        </div>
+                                        <div class="col-md-4">
+                                            <div class="form-group">
+                                                <label for="name">Password</label>
+                                                <input formControlName="password" type="password" class="form-control"
+                                                    id="password" placeholder="Password" />
+                                                <small *ngIf="form.get('password')!.invalid && isSubmited"
+                                                    class="text-danger">El password es requerido</small>
+                                            </div>
+                                        </div>
+                                        <div class="col-md-4">
+                                            <div class="form-group">
+                                                <div class="custom-control custom-switch">
+                                                    <input formControlName="isAdmin" type="checkbox" class="custom-control-input"
+                                                        id="customSwitch1">
+                                                    <label class="custom-control-label" for="customSwitch1">Es Administrador</label>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </form>
+                    </div>
+                    <div class="card-footer">
+                        <button type="button" class="btn btn-flat btn-primary btn-sm" (click)="onSubmit()">
+                            Guardar
+                        </button>
+                        <button class="btn btn-secondary btn-sm float-sm-right" (click)="onCancel()">
+                            Cancelar
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
