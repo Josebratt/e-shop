@@ -61,4 +61,9 @@ export class ProductService {
   deleteProduct(id: string): Observable<Product> {
     return this.httpClient.delete<Product>(`${this.API_URL}/${id}`);
   }
+
+  featuredProduct(count: number): Observable<Product[]> {
+    return this.httpClient.get<Product[]>(`${this.API_URL}/featured/${count}`);
+  }
+  
 }

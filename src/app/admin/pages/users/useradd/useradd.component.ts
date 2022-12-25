@@ -49,7 +49,7 @@ export class UseraddComponent implements OnInit, OnDestroy {
    */
   private _initForm() {
     this.form = this.fb.group({
-      names: ['', Validators.required],
+      firstNames: ['', Validators.required],
       lastNames: ['', Validators.required],
       address: ['', Validators.required],
       city: ['', Validators.required],
@@ -69,7 +69,7 @@ export class UseraddComponent implements OnInit, OnDestroy {
         .getUser(id)
         .pipe(takeUntil(this.endsubs$))
         .subscribe((user) => {
-          this.fc['names'].setValue(user?.names);
+          this.fc['firstNames'].setValue(user?.firstNames);
           this.fc['lastNames'].setValue(user?.lastNames);
           this.fc['address'].setValue(user?.address);
           this.fc['city'].setValue(user?.city);
@@ -91,8 +91,8 @@ export class UseraddComponent implements OnInit, OnDestroy {
     }
 
     const user: User = {
-      names: this.fc['names'].value,
       lastNames: this.fc['lastNames'].value,
+      firstNames: this.fc['firstNames'].value,
       email: this.fc['email'].value,
       password: this.fc['password'].value,
       phone: this.fc['phone'].value,
@@ -102,6 +102,9 @@ export class UseraddComponent implements OnInit, OnDestroy {
       city: this.fc['city'].value,
     };
 
+    console.log(user);
+    
+
     if (this.editmode) {
       this.updateUser(id!, user);
     } else {
@@ -110,25 +113,26 @@ export class UseraddComponent implements OnInit, OnDestroy {
   }
 
   saveUser(user: User) {
+    console.log(user.firstNames);
     this.userService
       .createUser(user)
       .pipe(takeUntil(this.endsubs$))
       .subscribe({
-        next: (user) => {
+        next: () => {
           Swal.fire({
             position: 'top-end',
             icon: 'success',
-            title: `El Usuario ${user.names} ha sido guardada`,
+            title: `El Usuario ha sido guardado`,
             showConfirmButton: false,
             timer: 1500,
           });
           this.location.back();
         },
-        error: (error: HttpErrorResponse) => {
+        error: () => {
           Swal.fire({
             position: 'top-end',
             icon: 'error',
-            title: `El Usuario no ha sido guardado ${error.error}`,
+            title: `El Usuario no ha sido guardado`,
             showConfirmButton: false,
             timer: 1500,
           });
@@ -145,7 +149,7 @@ export class UseraddComponent implements OnInit, OnDestroy {
           Swal.fire({
             position: 'top-end',
             icon: 'success',
-            title: `El Usuario ${user.names} ha sido actualizado`,
+            title: `El Usuario ${user.firstNames} ha sido actualizado`,
             showConfirmButton: false,
             timer: 1500,
           });

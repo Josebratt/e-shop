@@ -8,6 +8,7 @@ export interface Product {
     cloudinary_id?: string;
     category: Category;
     brand?: string;
+    isFeatured?: boolean;
     priceBuy?: string;
     priceSell?: string;
     countInStock?: string;

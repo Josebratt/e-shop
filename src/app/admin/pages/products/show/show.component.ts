@@ -12,6 +12,7 @@ import { Location } from '@angular/common';
 export class ShowProductComponent implements OnInit {
 
   product!: Product;
+  isDisabled: boolean = false;
 
   constructor(
     private productService: ProductService,

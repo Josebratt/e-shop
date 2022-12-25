@@ -73,7 +73,7 @@ export class ListComponent implements OnInit, OnDestroy {
           next: (data) => {
             this._getCategories();
             if (data) {
-              Swal.fire('Borrado!', `La categoria ${data.name} ha sido guardada`, 'success');
+              Swal.fire('Borrado!', `La categoria ha sido borrada`, 'success');
             }
             this.refresh();
           },

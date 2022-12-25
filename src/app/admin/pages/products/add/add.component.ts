@@ -64,6 +64,7 @@ export class AddProductComponent implements OnInit, OnDestroy {
       category: ['', Validators.required],
       priceBuy: ['', Validators.required],
       priceSell: [''],
+      isFeatured: [''],
       countInStock: ['', Validators.required],
       cloudinary_id: ['']
     });
@@ -102,6 +103,7 @@ export class AddProductComponent implements OnInit, OnDestroy {
             this.fc['priceBuy'].setValue(product.priceBuy);
             this.fc['priceSell'].setValue(product.priceSell);
             this.fc['countInStock'].setValue(product.countInStock);
+            this.fc['isFeatured'].setValue(product.isFeatured);
             this.imageDisplay = product.image;
             this.fc['image'].setValidators([]);
             this.fc['image'].updateValueAndValidity();

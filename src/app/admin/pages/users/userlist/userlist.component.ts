@@ -29,7 +29,6 @@ export class UserlistComponent implements OnInit {
     .subscribe({
       next: (users) => {
         this.users = users;
-        console.log(this.users);
         setTimeout(() => {
           $('#table').DataTable({
             retrieve: true,
