@@ -2,13 +2,9 @@
     <div class="text-center mb-4">
         <h2 class="section-title px-5"><span class="px-2">Productos Destacados</span></h2>
     </div>
-    <div class="row row-cols-1 row-cols-md-4" *ngIf="products">
-        <div class="col mb-4 product-item" *ngFor="let product of products">
-            <div class="product-item-wrapper">
-                <img [src]=" product.image " class="img responsive" style="max-height: 150px; display: block; margin: auto;" alt="...">
-                <h5 class="name">{{ product.name }}</h5>
-                <h5 class="price">{{ product.priceSell | currency }}</h5>
-            </div>
+    <div class="row row-cols-1 row-cols-md-4">
+        <div *ngFor="let product of products">
+            <app-product-item [product]="product"></app-product-item>
         </div>
-    </div>
+    </div>  
 </div>

@@ -1,0 +1,22 @@
+.product-item-wrapper {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+}
+
+.product-item .image {
+  width: 60%;
+  height: 150px;
+}
+
+.product-item .name {
+  margin: 10px 0;
+  font-size: 1em;
+}
+
+.product-item .price {
+  color: #28a745;
+  font-size: 1.2em;
+  margin: 0;
+}

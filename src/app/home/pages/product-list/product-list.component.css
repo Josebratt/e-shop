@@ -1,0 +1,52 @@
+.shop-toolbar {
+    display: table;
+    width: 100%;
+}
+.shop-toolbar > .column {
+    display: table-cell;
+    vertical-align: middle;
+}
+.shop-toolbar > .column:last-child {
+    text-align: right;
+}
+@media (max-width: 576px) {
+    .shop-toolbar > .column {
+        display: block;
+        width: 100%;
+        text-align: center;
+   }
+    .shop-toolbar > .column:last-child {
+        padding-top: 24px;
+        text-align: center;
+   }
+}
+
+.shop-sorting label, .shop-sorting .form-control, .shop-sorting span {
+    display: inline-block;
+    vertical-align: middle;
+}
+.shop-sorting span {
+    padding: 8px 0;
+}
+.shop-sorting label {
+    margin: 0;
+    padding: 8px 5px 8px 0;
+    color: #9da9b9;
+    font-size: 14px;
+    font-weight: normal;
+}
+.shop-sorting .form-control {
+    width: 100%;
+    max-width: 186px;
+    margin-right: 10px;
+}
+@media (max-width: 576px) {
+    .shop-sorting label, .shop-sorting .form-control {
+        display: block;
+        width: 100%;
+        max-width: 100%;
+        margin: 0;
+        padding-top: 0;
+        padding-right: 0;
+   }
+}
