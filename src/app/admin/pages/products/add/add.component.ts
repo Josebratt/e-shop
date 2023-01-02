@@ -64,7 +64,7 @@ export class AddProductComponent implements OnInit, OnDestroy {
       category: ['', Validators.required],
       priceBuy: ['', Validators.required],
       priceSell: [''],
-      isFeatured: [''],
+      isFeatured: [false],
       countInStock: ['', Validators.required],
       cloudinary_id: ['']
     });
