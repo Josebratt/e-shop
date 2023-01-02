@@ -1,236 +1,244 @@
 <div class="content-header">
-    <div class="container-fluid">
-      <div class="row mb-2">
-        <div class="col-sm-6">
-          <h4 *ngIf="!editmode; else edit" class="m-0">Crear Producto</h4>
-          <ng-template #edit>
-            <h4 class="m-0">Editar Producto</h4>
+  <div class="container-fluid">
+    <div class="row mb-2">
+      <div class="col-sm-6">
+        <h4 *ngIf="!editmode; else edit" class="m-0">Crear Producto</h4>
+        <ng-template #edit>
+          <h4 class="m-0">Editar Producto</h4>
+        </ng-template>
+      </div>
+      <div class="col-sm-6">
+        <ol class="breadcrumb float-sm-right">
+          <li class="breadcrumb-item"><a routerLink="/admin">Admin</a></li>
+          <li class="breadcrumb-item">
+            <a routerLink="/admin/product">Producto</a>
+          </li>
+          <li
+            *ngIf="!editmode; else update"
+            routerLink="/admin/product/add"
+            class="breadcrumb-item active"
+          >
+            Nuevo
+          </li>
+          <ng-template #update>
+            <li routerLink="/admin/product/add" class="breadcrumb-item active">
+              Actualizar
+            </li>
           </ng-template>
-        </div>
-        <div class="col-sm-6">
-          <ol class="breadcrumb float-sm-right">
-            <li class="breadcrumb-item"><a routerLink="/admin">Admin</a></li>
-            <li class="breadcrumb-item">
-              <a routerLink="/admin/product">Producto</a>
-            </li>
-            <li
-              *ngIf="!editmode; else update"
-              routerLink="/admin/product/add"
-              class="breadcrumb-item active"
-            >
-              Nuevo
-            </li>
-            <ng-template #update>
-              <li routerLink="/admin/product/add" class="breadcrumb-item active">
-                Actualizar
-              </li>
-            </ng-template>
-          </ol>
-        </div>
+        </ol>
       </div>
     </div>
   </div>
+</div>
 
-  <section class="content">
-    <div class="container-fluid">
-      <div class="row">
-        <div class="col-12">
-          <div class="card card-solid">
-            <div class="card-body">
-              <form [formGroup]="form">
-                <div class="row">
-                  <div class="col-12 col-sm-4">
-                    <div class="form-group mt-2">
-                      <div>
-                        <img
-                          class="responsive"
-                          style="max-height: 350px; display: block; margin: auto;"
-                          src="{{ imageDisplay }}"
-                          alt=""
-                        />
-                      </div>
-                      <div class="custom-file">
-                        <label class="custom-file-label" for="customFile"
-                          >Cargue una imagen</label
-                        >
+<section class="content">
+  <div class="container-fluid">
+    <div class="row">
+      <div class="col-12">
+        <div class="card card-solid">
+          <div class="card-body">
+            <form [formGroup]="form">
+              <div class="row">
+                <div class="col-12 col-sm-4">
+                  <div class="form-group mt-2">
+                    <div>
+                      <img
+                        class="responsive"
+                        style="max-height: 350px; display: block; margin: auto"
+                        src="{{ imageDisplay }}"
+                        alt=""
+                      />
+                    </div>
+                    <div class="custom-file">
+                      <label class="custom-file-label" for="customFile"
+                        >Cargue una imagen</label
+                      >
+                      <input
+                        type="file"
+                        class="custom-file-input"
+                        accept="image/*"
+                        id="customFile"
+                        (change)="imageUpload($event)"
+                      />
+                      <small
+                        *ngIf="form.get('image')!.invalid && isSubmited"
+                        class="p-error"
+                        >Image is required</small
+                      >
+                    </div>
+                  </div>
+                </div>
+                <div class="col-12 col-sm-8">
+                  <div class="form-row">
+                    <div class="col-md-3">
+                      <div class="form-group">
+                        <label for="code">Codigo</label>
                         <input
-                          type="file"
-                          class="custom-file-input"
-                          accept="image/*"
-                          id="customFile"
-                          (change)="imageUpload($event)"
+                          formControlName="sku"
+                          type="text"
+                          class="form-control"
+                          id="sku"
+                          placeholder="codigo"
                         />
                         <small
-                          *ngIf="form.get('image')!.invalid && isSubmited"
-                          class="p-error"
-                          >Image is required</small
+                          *ngIf="form.get('sku')!.invalid && isSubmited"
+                          class="text-danger"
+                          >El codigo es requerido</small
+                        >
+                      </div>
+                    </div>
+                    <div class="col-md-6">
+                      <div class="form-group">
+                        <label for="name">Nombre</label>
+                        <input
+                          formControlName="name"
+                          type="text"
+                          class="form-control"
+                          id="name"
+                          placeholder="nombre"
+                        />
+                        <small
+                          *ngIf="form.get('name')!.invalid && isSubmited"
+                          class="text-danger"
+                          >El nombre es requerido</small
+                        >
+                      </div>
+                    </div>
+                    <div class="col-md-3">
+                      <div class="form-group">
+                        <label for="brand">Marca</label>
+                        <input
+                          formControlName="brand"
+                          type="text"
+                          class="form-control"
+                          id="brand"
+                          placeholder="Marca"
+                        />
+                        <small
+                          *ngIf="form.get('brand')!.invalid && isSubmited"
+                          class="text-danger"
+                          >La marca es requerida</small
                         >
                       </div>
                     </div>
                   </div>
-                  <div class="col-12 col-sm-8">
-                    <div class="form-row">
-                      <div class="col-md-3">
-                        <div class="form-group">
-                          <label for="code">Codigo</label>
-                          <input
-                            formControlName="sku"
-                            type="text"
-                            class="form-control"
-                            id="sku"
-                            placeholder="codigo"
-                          />
-                          <small
-                            *ngIf="form.get('sku')!.invalid && isSubmited"
-                            class="text-danger"
-                            >El codigo es requerido</small
+                  <div class="form-row">
+                    <div class="col-md-4">
+                      <div class="form-group">
+                        <label for="category">Categoria</label>
+                        <select
+                          class="custom-select"
+                          formControlName="category"
+                          id="category"
+                        >
+                          <option
+                            *ngFor="let categoria of categories"
+                            [value]="categoria.id"
                           >
-                        </div>
-                      </div>
-                      <div class="col-md-6">
-                        <div class="form-group">
-                          <label for="name">Nombre</label>
-                          <input
-                            formControlName="name"
-                            type="text"
-                            class="form-control"
-                            id="name"
-                            placeholder="nombre"
-                          />
-                          <small
-                            *ngIf="form.get('name')!.invalid && isSubmited"
-                            class="text-danger"
-                            >El nombre es requerido</small
-                          >
-                        </div>
-                      </div>
-                      <div class="col-md-3">
-                        <div class="form-group">
-                          <label for="brand">Marca</label>
-                          <input
-                            formControlName="brand"
-                            type="text"
-                            class="form-control"
-                            id="brand"
-                            placeholder="Marca"
-                          />
-                          <small
-                            *ngIf="form.get('brand')!.invalid && isSubmited"
-                            class="text-danger"
-                            >La marca es requerida</small
-                          >
-                        </div>
+                            {{ categoria.name }}
+                          </option>
+                        </select>
+                        <small
+                          *ngIf="form.get('category')!.invalid && isSubmited"
+                          class="text-danger"
+                          >La categoria es requerida</small
+                        >
                       </div>
                     </div>
-                    <div class="form-row">
-                      <div class="col-md-4">
-                        <div class="form-group">
-                          <label for="category">Categoria</label>
-                          <select
-                            class="custom-select"
-                            formControlName="category"
-                            id="category"
-                          >
-                            <option
-                              *ngFor="let categoria of categories"
-                              [value]="categoria.id"
-                            >
-                              {{ categoria.name }}
-                            </option>
-                          </select>
-                          <small
-                            *ngIf="form.get('category')!.invalid && isSubmited"
-                            class="text-danger"
-                            >La categoria es requerida</small
-                          >
-                        </div>
-                      </div>
-                      <div class="col-md-4">
-                        <div class="form-group">
-                          <label for="brand">Precio compra</label>
-                          <input
-                            formControlName="priceBuy"
-                            type="number"
-                            class="form-control"
-                            id="priceBuy"
-                            placeholder="Precio de compra"
-                          />
-                          <small
-                            *ngIf="form.get('priceBuy')!.invalid && isSubmited"
-                            class="text-danger"
-                            >El precio es requerido</small
-                          >
-                        </div>
-                      </div>
-                      <div class="col-md-4">
-                        <div class="form-group">
-                          <label for="countInStock">Cantidad</label>
-                          <input
-                            formControlName="countInStock"
-                            type="number"
-                            class="form-control"
-                            id="countInStock"
-                            placeholder="Cantidad"
-                          />
-                          <small
-                            *ngIf="
-                              form.get('countInStock')!.invalid && isSubmited
-                            "
-                            class="text-danger"
-                            >La cantidad es requerido</small
-                          >
-                        </div>
+                    <div class="col-md-4">
+                      <div class="form-group">
+                        <label for="brand">Precio compra</label>
+                        <input
+                          formControlName="priceBuy"
+                          type="number"
+                          class="form-control"
+                          id="priceBuy"
+                          placeholder="Precio de compra"
+                        />
+                        <small
+                          *ngIf="form.get('priceBuy')!.invalid && isSubmited"
+                          class="text-danger"
+                          >El precio es requerido</small
+                        >
                       </div>
                     </div>
-                    <div class="form-row">
-                      <div class="col-md-4">
-                        <div class="form-group">
-                          <label for="brand">Precio venta</label>
+                    <div class="col-md-4">
+                      <div class="form-group">
+                        <label for="countInStock">Cantidad</label>
+                        <input
+                          formControlName="countInStock"
+                          type="number"
+                          class="form-control"
+                          id="countInStock"
+                          placeholder="Cantidad"
+                        />
+                        <small
+                          *ngIf="
+                            form.get('countInStock')!.invalid && isSubmited
+                          "
+                          class="text-danger"
+                          >La cantidad es requerido</small
+                        >
+                      </div>
+                    </div>
+                  </div>
+                  <div class="form-row">
+                    <div class="col-md-4">
+                      <div class="form-group">
+                        <label for="brand">Precio venta</label>
+                        <input
+                          formControlName="priceSell"
+                          type="number"
+                          class="form-control"
+                          id="priceSell"
+                          placeholder="Precio de compra"
+                        />
+                        <small
+                          *ngIf="form.get('priceSell')!.invalid && isSubmited"
+                          class="text-danger"
+                          >El precio es requerido</small
+                        >
+                      </div>
+                    </div>
+                    <div class="col-md-4">
+                      <div class="form-group">
+                        <div class="custom-control custom-switch">
                           <input
-                            formControlName="priceSell"
-                            type="number"
-                            class="form-control"
-                            id="priceSell"
-                            placeholder="Precio de compra"
+                            formControlName="isFeatured"
+                            type="checkbox"
+                            class="custom-control-input"
+                            id="isFeatured"
                           />
-                          <small
-                            *ngIf="form.get('priceSell')!.invalid && isSubmited"
-                            class="text-danger"
-                            >El precio es requerido</small
+                          <label
+                            class="custom-control-label"
+                            for="isFeatured"
+                            >Es Destacado</label
                           >
                         </div>
-                      </div>
-                      <div class="col-md-4">
-                          <div class="form-group">
-                              <div class="custom-control custom-switch">
-                                  <input formControlName="isFeatured" type="checkbox" class="custom-control-input"
-                                      id="customSwitch1">
-                                  <label class="custom-control-label" for="customSwitch1">Es Destacado</label>
-                              </div>
-                          </div>
                       </div>
                     </div>
                   </div>
                 </div>
-              </form>
-            </div>
-            <div class="card-footer">
-              <button
-                type="button"
-                class="btn btn-flat btn-primary btn-sm"
-                (click)="onSubmit()"
-              >
-                Guardar
-              </button>
-              <button
-                class="btn btn-secondary btn-sm float-sm-right"
-                (click)="onCancel()"
-              >
-                Cancelar
-              </button>
-            </div>
+              </div>
+            </form>
+          </div>
+          <div class="card-footer">
+            <button
+              type="button"
+              class="btn btn-flat btn-primary btn-sm"
+              (click)="onSubmit()"
+            >
+              Guardar
+            </button>
+            <button
+              class="btn btn-secondary btn-sm float-sm-right"
+              (click)="onCancel()"
+            >
+              Cancelar
+            </button>
           </div>
         </div>
       </div>
     </div>
-  </section>
+  </div>
+</section>

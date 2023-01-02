@@ -7,11 +7,13 @@ import { AppRoutingModule } from './app.routes';
 import { LoginComponent } from './auth/login/login.component';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { JwtInterceptorService } from './services/jwt-interceptor.service';
+import { SortPipe } from './pipe/sort.pipe';
 
 @NgModule({
   declarations: [
     AppComponent,
-    LoginComponent
+    LoginComponent,
+    SortPipe
   ],
   imports: [
     BrowserModule,
@@ -24,7 +26,7 @@ import { JwtInterceptorService } from './services/jwt-interceptor.service';
     provide: HTTP_INTERCEPTORS,
     useClass: JwtInterceptorService,
     multi: true
-  }],
+  }, SortPipe ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

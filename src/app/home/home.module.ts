@@ -11,6 +11,7 @@ import { FeaturedProductsComponent } from './pages/featured-products/featured-pr
 import { ProductListComponent } from './pages/product-list/product-list.component';
 import { ProductDetailsComponent } from './pages/product-details/product-details.component';
 import { ProductItemComponent } from './pages/product-item/product-item.component';
+import { FormsModule } from '@angular/forms';
 
 
 @NgModule({
@@ -26,7 +27,8 @@ import { ProductItemComponent } from './pages/product-item/product-item.componen
   ],
   imports: [
     CommonModule,
-    HomeRoutingModule
+    HomeRoutingModule,
+    FormsModule
   ]
 })
 export class HomeModule { }
