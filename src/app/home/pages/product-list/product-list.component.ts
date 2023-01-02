@@ -29,8 +29,9 @@ export class ProductListComponent implements OnInit, OnDestroy {
   ) {}
 
   ngOnInit(): void {
+    this._getProducts();
     this._getCategories();
-    // this._getProducts();
+    
     // this.uiService.currentPagingPage$
     //   .pipe(takeUntil(this.endsubs$))
     //   .subscribe((page) => (this.currentPagingPage = page));
@@ -52,9 +53,8 @@ export class ProductListComponent implements OnInit, OnDestroy {
     const selectedCategories: any[] = this.categories
       .filter((category) => category.checked)
       .map((category) => category.id);
-    
+      
       this._getProducts(selectedCategories)
-    
   }
 
   private _getProducts(categoriesFilter?: string[]) {
