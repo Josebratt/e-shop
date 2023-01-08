@@ -15,10 +15,11 @@ export class ProductService {
     private httpClient: HttpClient
   ) { }
 
-  /**
-   * get all products
-   * @returns 
-   */
+/**
+ * get all products
+ * @param categoriesFilter 
+ * @returns 
+ */
   getProducts(categoriesFilter?: string[]): Observable<Product[]> {
     let params = new HttpParams();
     if (categoriesFilter) {
@@ -66,6 +67,11 @@ export class ProductService {
     return this.httpClient.delete<Product>(`${this.API_URL}/${id}`);
   }
 
+/**
+ * get all featured products 
+ * @param count 
+ * @returns 
+ */
   featuredProduct(count: number): Observable<Product[]> {
     return this.httpClient.get<Product[]>(`${this.API_URL}/featured/${count}`);
   }
