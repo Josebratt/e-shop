@@ -1,3 +1,4 @@
+import { CartService } from './../services/cart.service';
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 
@@ -31,4 +32,9 @@ import { FormsModule } from '@angular/forms';
     FormsModule
   ]
 })
-export class HomeModule { }
+export class HomeModule { 
+  constructor(cartService: CartService) {
+    cartService.initCartLocalStorage();
+   }
+
+}
