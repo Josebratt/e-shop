@@ -13,6 +13,7 @@ import { ProductListComponent } from './pages/product-list/product-list.componen
 import { ProductDetailsComponent } from './pages/product-details/product-details.component';
 import { ProductItemComponent } from './pages/product-item/product-item.component';
 import { FormsModule } from '@angular/forms';
+import { CartIconComponent } from './pages/cart-icon/cart-icon.component';
 
 
 @NgModule({
@@ -24,7 +25,8 @@ import { FormsModule } from '@angular/forms';
     FeaturedProductsComponent,
     ProductListComponent,
     ProductDetailsComponent,
-    ProductItemComponent
+    ProductItemComponent,
+    CartIconComponent
   ],
   imports: [
     CommonModule,

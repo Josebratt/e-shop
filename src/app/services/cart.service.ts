@@ -1,14 +1,16 @@
 import { Injectable } from '@angular/core';
+import { BehaviorSubject } from 'rxjs';
 import { Cart, CartItem } from '../interfaces/cart';
 
 export const CART_KEY = 'cart';
 
 @Injectable({
-  providedIn: 'root'
+  providedIn: 'root',
 })
 export class CartService {
+  cart$: BehaviorSubject<Cart> = new BehaviorSubject(this.getCart());
 
-  constructor() { }
+  constructor() {}
 
   /**
    * initial localstorage cart
@@ -18,20 +20,29 @@ export class CartService {
 
     if (!cart.items?.length) {
       const intialCart = {
-        items: []
+        items: [],
       };
-  
+
       const intialCartJson = JSON.stringify(intialCart);
 
       localStorage.setItem(CART_KEY, intialCartJson);
     }
   }
 
-  getCart(): Cart { 
-    const cart: Cart = JSON.parse(localStorage.getItem(CART_KEY) || '{}');   
+  /**
+   * get cart from localstorage
+   */
+  getCart(): Cart {
+    const cart: Cart = JSON.parse(localStorage.getItem(CART_KEY) || '{}');
     return cart;
   }
 
+  /**
+   * Set cart to localstorage
+   * @param cartItem
+   * @param updateCartItem
+   * @returns
+   */
   setCartItem(cartItem: CartItem, updateCartItem?: boolean): Cart {
     const cart = this.getCart();
 
@@ -45,15 +56,17 @@ export class CartService {
             item.quantity = cartItem.quantity;
           } else {
             item.quantity = item.quantity! + cartItem.quantity!;
-          }  
+          }
         }
       });
-    } else {      
+    } else {
       cart.items?.push(cartItem);
     }
 
     const cartJson = JSON.stringify(cart);
     localStorage.setItem(CART_KEY, cartJson);
+
+    this.cart$.next(cart);
 
     return cart;
   }
