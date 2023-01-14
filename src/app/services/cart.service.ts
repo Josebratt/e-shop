@@ -70,4 +70,18 @@ export class CartService {
 
     return cart;
   }
+
+  delCartItem(id: string) {
+    const cart = this.getCart();
+    const newCart = cart.items?.filter(
+      item => item.productId !== id
+    )
+
+    cart.items = newCart;
+
+    const cartJson = JSON.stringify(cart);
+    localStorage.setItem(CART_KEY, cartJson);
+
+    this.cart$.next(cart);
+  }
 }
