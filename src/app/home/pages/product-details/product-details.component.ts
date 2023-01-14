@@ -1,8 +1,11 @@
+import { CartService } from 'src/app/services/cart.service';
+
 import { Product } from 'src/app/interfaces/product';
 import { Component, OnInit, OnDestroy } from '@angular/core';
 import { ProductService } from 'src/app/services/product.service';
 import { ActivatedRoute } from '@angular/router';
 import { Subject, takeUntil } from 'rxjs';
+import { CartItem } from 'src/app/interfaces/cart';
 
 @Component({
   selector: 'app-product-details',
@@ -11,11 +14,12 @@ import { Subject, takeUntil } from 'rxjs';
 })
 export class ProductDetailsComponent implements OnInit, OnDestroy {
   product!: Product;
-  quantity!: number;
+  quantity = 1;
   endsubs$: Subject<unknown> = new Subject();
 
   constructor(
     private productService: ProductService,
+    private cartService: CartService,
     private activatedRoute: ActivatedRoute
   ) {}
 
@@ -43,5 +47,11 @@ export class ProductDetailsComponent implements OnInit, OnDestroy {
     }
   }
 
-  onAddToCart() {}
+  onAddToCart() {
+    const cartItem: CartItem = {
+      productId: this.product.id,
+      quantity: this.quantity,
+    };
+    this.cartService.setCartItem(cartItem);
+  }
 }
