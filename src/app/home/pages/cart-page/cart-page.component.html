@@ -54,7 +54,7 @@
                                     <td>{{ productItem.product.priceSell * productItem.quantity! | currency }}</td>
                                     <td>
                                         <button type="button" class="btn btn-flat btn-danger btn-sm">
-                                            <i class="nav-icon fas fa-trash" (click)="onRemove()"></i>
+                                            <i class="nav-icon fas fa-trash" (click)="onRemove(productItem)"></i>
                                         </button>
                                     </td>
                                 </tr>
@@ -65,20 +65,7 @@
                 </div>
             </div>
             <div class="col-md-4">
-                <div class="card">
-                    <div class="card-header">
-                        <h5>Resumen del pedido</h5>
-                    </div>
-                    <div class="card-body">
-                        <ul class="list-group list-group-flush">
-                            <li class="list-group-item">Sub-total <span>$454.98</span> </li>
-                        </ul>
-                        
-                    </div>
-                    <div class="card-footer">
-                        <a href="#" class="btn btn-outline-success">PROCEED TO CHECKOUT</a>
-                    </div>
-                </div>
+                <app-order-summary></app-order-summary>
             </div>
         </div>
     </div>
