@@ -1,20 +1,23 @@
-<div class="card">
+<div class="card p-2">
     <div class="card-header">
         <h5>Resumen del pedido</h5>
     </div>
     <div class="card-body">
         <ul class="list-group list-group-flush">
-            <li class="list-group-item">Sub-total <span>{{ totalPrice | currency }}</span> </li>
+            <li class="list-group-item">Sub-total <span style="float: right;">{{ totalPrice | currency }}</span> </li>
         </ul>
         <ul class="list-group list-group-flush">
-            <li class="list-group-item">Envio <span>0</span> </li>
+            <li class="list-group-item">Envio <span style="float: right;">0</span> </li>
         </ul>
         <ul class="list-group list-group-flush">
-            <li class="list-group-item">Total <span>{{ totalPrice | currency }}</span> </li>
+            <li class="list-group-item">Total <span style="float: right;">{{ totalPrice | currency }}</span> </li>
         </ul>
         
     </div>
     <div class="card-footer">
-        <a href="#" class="btn btn-outline-success">PROCEED TO CHECKOUT</a>
+        <a href="#" class="btn btn-success btn-block">ir a pagar</a> 
+    </div>
+    <div class="mt-2">
+        <a routerLink="/products" class="btn btn-primary btn-block">Seguir comprando</a>
     </div>
 </div>
