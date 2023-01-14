@@ -1,1 +1,20 @@
-<p>order-summary works!</p>
+<div class="card">
+    <div class="card-header">
+        <h5>Resumen del pedido</h5>
+    </div>
+    <div class="card-body">
+        <ul class="list-group list-group-flush">
+            <li class="list-group-item">Sub-total <span>{{ totalPrice | currency }}</span> </li>
+        </ul>
+        <ul class="list-group list-group-flush">
+            <li class="list-group-item">Envio <span>0</span> </li>
+        </ul>
+        <ul class="list-group list-group-flush">
+            <li class="list-group-item">Total <span>{{ totalPrice | currency }}</span> </li>
+        </ul>
+        
+    </div>
+    <div class="card-footer">
+        <a href="#" class="btn btn-outline-success">PROCEED TO CHECKOUT</a>
+    </div>
+</div>

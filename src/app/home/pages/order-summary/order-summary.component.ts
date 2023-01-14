@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { CartService } from 'src/app/services/cart.service';
 
 @Component({
   selector: 'app-order-summary',
@@ -7,9 +8,27 @@ import { Component, OnInit } from '@angular/core';
 })
 export class OrderSummaryComponent implements OnInit {
 
-  constructor() { }
+  totalPrice = 0;
+  isCheckout = false;
+
+  constructor(
+    private cartService: CartService,
+  ) { }
 
   ngOnInit(): void {
+    this._getOrderSummary();
+  }
+
+  _getOrderSummary() {
+    this.cartService.cart$.pipe().subscribe(
+      (cart) => {
+        if (cart) { 
+          cart.items?.map((item) => {
+            this
+          })
+        }
+      }
+    )
   }
 
 }
