@@ -11,7 +11,7 @@ import { Subject, takeUntil } from 'rxjs';
   styleUrls: ['./cart-page.component.css'],
 })
 export class CartPageComponent implements OnInit, OnDestroy {
-  productDatails: CartItemDetailed[] = [];
+  productDetails: CartItemDetailed[] = [];
   quantity = 0;
 
   endSubs$: Subject<unknown> = new Subject();
@@ -32,17 +32,26 @@ export class CartPageComponent implements OnInit, OnDestroy {
   }
 
   private _getCartDetails() {
-    this.cartService.cart$.pipe(takeUntil(this.endSubs$)).subscribe((cart) => {
-      this.productDatails = [];
-      cart.items!.forEach((item) => {
+    this.cartService.cart$.pipe().subscribe((cart) => {
+      this.productDetails = [];
+      cart.items?.forEach((item) => {
         this.productService.getProduct(item.productId!).subscribe((data) => {
-          this.productDatails.push({
+          this.productDetails.push({
             product: data,
             quantity: item.quantity,
           });
         });
       });
     });
+  }
+
+  updateCartItemQuantity(event: any, cartItem: CartItemDetailed) {
+    this.cartService.setCartItem(
+      {
+        productId: cartItem.product.id,
+        quantity: event.target.value      },
+      true
+    );
   }
 
   onRemove(cartItem: CartItemDetailed) {
