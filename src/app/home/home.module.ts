@@ -16,6 +16,7 @@ import { FormsModule } from '@angular/forms';
 import { CartIconComponent } from './pages/cart-icon/cart-icon.component';
 import { CartPageComponent } from './pages/cart-page/cart-page.component';
 import { OrderSummaryComponent } from './pages/order-summary/order-summary.component';
+import { CheckOutComponent } from './pages/check-out/check-out.component';
 
 
 @NgModule({
@@ -30,7 +31,8 @@ import { OrderSummaryComponent } from './pages/order-summary/order-summary.compo
     ProductItemComponent,
     CartIconComponent,
     CartPageComponent,
-    OrderSummaryComponent
+    OrderSummaryComponent,
+    CheckOutComponent
   ],
   imports: [
     CommonModule,
