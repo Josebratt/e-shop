@@ -12,7 +12,7 @@ import { FeaturedProductsComponent } from './pages/featured-products/featured-pr
 import { ProductListComponent } from './pages/product-list/product-list.component';
 import { ProductDetailsComponent } from './pages/product-details/product-details.component';
 import { ProductItemComponent } from './pages/product-item/product-item.component';
-import { FormsModule } from '@angular/forms';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { CartIconComponent } from './pages/cart-icon/cart-icon.component';
 import { CartPageComponent } from './pages/cart-page/cart-page.component';
 import { OrderSummaryComponent } from './pages/order-summary/order-summary.component';
@@ -37,7 +37,8 @@ import { CheckOutComponent } from './pages/check-out/check-out.component';
   imports: [
     CommonModule,
     HomeRoutingModule,
-    FormsModule
+    FormsModule,
+    ReactiveFormsModule
   ]
 })
 export class HomeModule { 
