@@ -68,8 +68,11 @@ export class CheckOutComponent implements OnInit {
     console.log(order);
     
     this.orderService.createOrder(order).subscribe(
-      () => { console.log('orden adicionado exitosamente');
+      () => { 
+        this.cartService.emptyCart();
+        this.router.navigate(['/']); 
       }
+    
     );
   }
 
