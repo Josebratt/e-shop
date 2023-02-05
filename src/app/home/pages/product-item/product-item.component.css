@@ -7,7 +7,7 @@
 
 .product-item .image {
   width: 60%;
-  height: 150px;
+  height: auto;
 }
 
 .product-item .name {

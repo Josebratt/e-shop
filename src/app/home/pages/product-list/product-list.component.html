@@ -44,9 +44,10 @@
 
           </div>
           <div class="row row-cols-1 row-cols-md-4 mt-4" *ngIf="products">
-            <div *ngFor="let product of products">
+            <div *ngFor="let product of products | paginate: { itemsPerPage: 12, currentPage: p }">
                 <app-product-item [product]="product"></app-product-item>
             </div>
+            <pagination-controls class="pt-3" style=" margin: 0 auto; display: inline-block; min-width: fit-content;" (pageChange)="p = $event"></pagination-controls>
         </div>
         </div>
       </div>

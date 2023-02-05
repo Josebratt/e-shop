@@ -16,6 +16,7 @@ export class ProductListComponent implements OnInit, OnDestroy {
   
   products: Product[] = [];
   categories: Category[] = [];
+  p: number = 1;
 
   endsubs$: Subject<unknown> = new Subject();
 
