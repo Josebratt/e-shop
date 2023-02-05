@@ -17,6 +17,7 @@ import { CartIconComponent } from './pages/cart-icon/cart-icon.component';
 import { CartPageComponent } from './pages/cart-page/cart-page.component';
 import { OrderSummaryComponent } from './pages/order-summary/order-summary.component';
 import { CheckOutComponent } from './pages/check-out/check-out.component';
+import { NgxPaginationModule } from 'ngx-pagination';
 
 
 @NgModule({
@@ -38,7 +39,8 @@ import { CheckOutComponent } from './pages/check-out/check-out.component';
     CommonModule,
     HomeRoutingModule,
     FormsModule,
-    ReactiveFormsModule
+    ReactiveFormsModule,
+    NgxPaginationModule
   ]
 })
 export class HomeModule { 
