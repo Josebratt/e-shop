@@ -19,36 +19,40 @@
 
 <div class="container padding-bottom-3x mb-1">
   <div class="row">
-    <div class="col-3">
-      <p>categories</p> 
-      <div class="form-check" *ngFor="let category of categories">
-        <input [(ngModel)]="category.checked" binary="true" (change)="categoryFilter()"
-        class="form-check-input" type="checkbox">
-        <label class="form-check-label" for="{{ category.id }}">{{ category.name }} </label>
+    <div class="col-md-3 list-group">
+      <p>Categories</p>
+      <div class="form-check list-group-item list-group-item-action border-0" *ngFor="let category of categories">
+        <input id="id" [(ngModel)]="category.checked" binary="true" (change)="categoryFilter()" type="checkbox">
+        <label class="pl-2" for="{{ category.id }}">{{ category.name }} </label>
       </div>
     </div>
-    <div class="col-9">
+    <div class="col-md-9">
       <div class="shop-toolbar padding-bottom-1x mb-2">
         <div class="column">
           <div class="shop-sorting">
             <label for="sorting">Sort by:</label>
             <select class="form-control" id="sorting" #selectSort (change)="onSort(selectSort.value)">
-              <option value="createAt:reverse" [selected]="(uiService.sorting$ | async) === 'createAt:reverse'">Newest Articles</option>
-              <option value="priceSell" [selected]="(uiService.sorting$ | async) === 'priceSell'">Low - High Price</option>
-              <option value="priceSell:reverse" [selected]="(uiService.sorting$ | async) === 'priceSell:reverse'">High - Low Price</option>
+              <option value="createAt:reverse" [selected]="(uiService.sorting$ | async) === 'createAt:reverse'">Newest
+                Articles</option>
+              <option value="priceSell" [selected]="(uiService.sorting$ | async) === 'priceSell'">Low - High Price
+              </option>
+              <option value="priceSell:reverse" [selected]="(uiService.sorting$ | async) === 'priceSell:reverse'">High -
+                Low Price</option>
               <option value="name" [selected]="(uiService.sorting$ | async) === 'name'">A - Z Order</option>
-              <option value="name:reverse" [selected]="(uiService.sorting$ | async) === 'name:reverse'">Z - A Order</option>
+              <option value="name:reverse" [selected]="(uiService.sorting$ | async) === 'name:reverse'">Z - A Order
+              </option>
             </select>
             <!-- <span class="text-muted">Showing:&nbsp;</span>
             <span>1 - 12 items</span> -->
 
           </div>
-          <div class="row row-cols-1 row-cols-md-4 mt-4" *ngIf="products">
-            <div *ngFor="let product of products | paginate: { itemsPerPage: 12, currentPage: p }">
-                <app-product-item [product]="product"></app-product-item>
+          <div class="row row-cols-1 row-cols-md-5 mt-4" *ngIf="products">
+            <div *ngFor="let product of products | paginate: { itemsPerPage: 15, currentPage: p }">
+              <app-product-item [product]="product"></app-product-item>
             </div>
-            <pagination-controls class="pt-3" style=" margin: 0 auto; display: inline-block; min-width: fit-content;" (pageChange)="p = $event"></pagination-controls>
-        </div>
+            <pagination-controls class="pt-3" style=" margin: 0 auto; display: inline-block; min-width: fit-content;"
+              (pageChange)="p = $event"></pagination-controls>
+          </div>
         </div>
       </div>
     </div>
