@@ -11,6 +11,8 @@ import { ListProductComponent } from './pages/products/list/list.component';
 import { ShowProductComponent } from './pages/products/show/show.component';
 import { UseraddComponent } from './pages/users/useradd/useradd.component';
 import { UserlistComponent } from './pages/users/userlist/userlist.component';
+import { OrderDetailsComponent } from './pages/orders/order-details/order-details.component';
+import { OrdersListComponent } from './pages/orders/orders-list/orders-list.component';
 
 export const routes: Routes = [
   {
@@ -29,6 +31,8 @@ export const routes: Routes = [
       { path: 'user', component: UserlistComponent },
       { path: 'user/add', component: UseraddComponent },
       { path: 'user/add/:id', component: UseraddComponent },
+      { path: 'order', component: OrdersListComponent },
+      { path: 'order/:id', component: OrderDetailsComponent }
     ]
   },
 ];
