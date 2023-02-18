@@ -19,8 +19,9 @@ import { ShowProductComponent } from './pages/products/show/show.component';
 import { DashboardComponent } from './pages/dashboard/dashboard.component';
 import { UserlistComponent } from './pages/users/userlist/userlist.component';
 import { UseraddComponent } from './pages/users/useradd/useradd.component';
-import { OrdersListComponent } from './pages/orders-list/orders-list.component';
-import { OrderDetailsComponent } from './pages/order-details/order-details.component';
+import { OrdersListComponent } from './pages/orders/orders-list/orders-list.component';
+import { OrderDetailsComponent } from './pages/orders/order-details/order-details.component';
+
 
 
 
