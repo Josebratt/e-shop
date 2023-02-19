@@ -1,1 +1,70 @@
-<p>orders-list works!</p>
+<div class="content-header">
+  <div class="container-fluid">
+    <div class="row mb-2">
+      <div class="col-sm-6">
+        <h1 class="m-0">Lista de Ordenes</h1>
+      </div>
+      <div class="col-sm-6">
+        <ol class="breadcrumb float-sm-right">
+          <li class="breadcrumb-item"><a routerLink="/admin">Admin</a></li>
+          <li class="breadcrumb-item active" routerLink="/admin/order">
+            Orden
+          </li>
+        </ol>
+      </div>
+    </div>
+  </div>
+</div>
+<section class="content">
+  <div class="container-fluid">
+    <div class="row">
+      <div class="col-12">
+        <div class="card">
+          <div class="card-body table-responsive p-2">
+            <table id="table" class="table table-hover text-nowrap table-sm table-bordered compact responsive">
+              <thead>
+                <tr>
+                  <th style="width: 6%">ID</th>
+                  <th>Nombres</th>
+                  <th>Direccion</th>
+                  <th>Ciudad</th>
+                  <th>Precio Total</th>
+                  <th>Fecha Orden</th>
+                  <th>Status</th>
+                  <th style="width: 8%"></th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr *ngFor="let order of orders; let i = index">
+                  <td>{{ i + 1 }}</td>
+                  <td>{{ order.user.firstNames }}</td>
+                  <td>{{ order.address }}</td>
+                  <td>{{ order.city }}</td>
+                  <td>{{ order.totalPrice }}</td>
+                  <td>{{ order.updatedAt | date }}</td>
+                  <td>
+                    <span class="badge badge-secondary" *ngIf="order.status == 0"> Pendiente </span>
+                    <span class="badge badge-warning" *ngIf="order.status == 1"> Procesado </span>
+                    <span class="badge badge-warning" *ngIf="order.status == 2"> Enviado </span>
+                    <span class="badge badge-success" *ngIf="order.status == 3"> Entregado </span>
+                    <span class="badge badge-alert" *ngIf="order.status == 4"> No Entregado </span>
+                  </td>
+                  <td>
+                    <div class="float-sm-right">
+                      <!-- <button type="button" class="btn btn-flat btn-success btn-sm mr-1">
+                                                    <i class="nav-icon fas fa-eye"></i>
+                                                </button> -->
+                      <button type="button" class="btn btn-flat btn-primary btn-sm mr-1" (click)="showOrder(order.id)">
+                        <i class="nav-icon fas fa-pencil-alt"></i>
+                      </button>
+                    </div>
+                  </td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
