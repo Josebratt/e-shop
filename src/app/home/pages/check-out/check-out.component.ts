@@ -8,6 +8,7 @@ import { AbstractControl, FormBuilder, FormGroup, Validators } from '@angular/fo
 import { Order } from 'src/app/interfaces/order';
 import { Cart } from 'src/app/interfaces/cart';
 import { ORDER_STATUS } from 'src/app/interfaces/order.constants';
+import { LocalstorageService } from 'src/app/services/localstorage.service';
 
 @Component({
   selector: 'app-check-out',
@@ -19,14 +20,15 @@ export class CheckOutComponent implements OnInit {
   form!: FormGroup;
   isSubmited = false;
   orderItems: OrderItem[] = [];
-  userId = '63a85a94f090909a0d916e80';
+  userId!: string;
 
   constructor(
     private fb: FormBuilder,
     private userService: UserService,
     private cartService: CartService,
     private orderService: OrderService,
-    private router: Router
+    private router: Router,
+    private localStorage: LocalstorageService
   ) { }
 
   ngOnInit(): void {
@@ -48,7 +50,19 @@ export class CheckOutComponent implements OnInit {
     });
   }
 
+  getId () {
+    const token = this.localStorage.getToken();
+    if (token) {
+      const tokenDecode = JSON.parse(atob(token.split('.')[1]));
+      
+      if (tokenDecode.userId) {        
+        return this.userId = tokenDecode.userId;
+      }
+    }
+  }
+
   placeOrder() {
+    this.getId();
     this.isSubmited = true;
     if (this.form.invalid) {
       return;
@@ -64,8 +78,6 @@ export class CheckOutComponent implements OnInit {
       user: this.userId,
       dateOrdered: `${Date.now()}`
     }
-
-    console.log(order);
     
     this.orderService.createOrder(order).subscribe(
       () => { 
