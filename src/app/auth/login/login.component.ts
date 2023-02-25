@@ -15,6 +15,7 @@ export class LoginComponent implements OnInit {
 
   form!: FormGroup;
   isSubmited = false;
+  isAdmin = false;
 
   constructor(
     private fb: FormBuilder,
@@ -34,6 +35,17 @@ export class LoginComponent implements OnInit {
     })
   }
 
+  getId () {
+    const token = this.localStorage.getToken();
+    if (token) {
+      const tokenDecode = JSON.parse(atob(token.split('.')[1]));
+      
+      if (tokenDecode.isAdmin) {        
+        return this.isAdmin = tokenDecode.isAdmin;
+      }
+    }
+  }
+
   onLogin(): void {
     this.isSubmited = true;
     if (this.form.invalid) {
@@ -41,9 +53,15 @@ export class LoginComponent implements OnInit {
     }
     this.authService.login(this.fc['email'].value, this.fc['password'].value)
      .subscribe({
-      next: (data) => {
+      next: (data) => {        
        this.localStorage.setToken(data.token);
-       this.router.navigate(['/']);
+       this.getId();
+       
+       if (this.isAdmin == true) {
+        this.router.navigate(['/admin']);
+       } else {
+        this.router.navigate(['/']);
+       }
       },
       error: (error: HttpErrorResponse) => {
         if (error.status === 400) {
