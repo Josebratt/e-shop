@@ -73,9 +73,35 @@
                         <a routerLink="products" class="nav-item nav-link">Productos</a>
                         <!-- <a href="contact.html" class="nav-item nav-link">Contact</a>  -->
                     </div>
-                    <div class="navbar-nav ml-auto py-0">
+                    <div class="navbar-nav ml-auto py-0" *ngIf="!userId; else session">
                         <a routerLink="login" class="nav-item nav-link">Login</a>
                     </div>
+                    <ng-template #session>
+                        <ul class="navbar-nav ml-auto">
+                            <li class="nav-item dropdown">
+                                <a class="nav-link" data-toggle="dropdown" href="#">
+                                    <i class="far fa-user"></i>
+                                    <span> User</span>
+                                </a>
+                                <div class="dropdown-menu dropdown-menu-md dropdown-menu-right">
+                                    <span class="dropdown-header">Area Personal</span>
+                                    <div class="dropdown-divider"></div>
+                                    <a href="#" class="dropdown-item">
+                                        <i class="fas fa-envelope mr-2"></i> Perfil 
+                                    </a>
+                                    <div class="dropdown-divider"></div>
+                                    <a href="#" class="dropdown-item">
+                                        <i class="fas fa-users mr-2"></i> Pedidos
+                                    </a>
+                                    <div class="dropdown-divider"></div>
+                                    <a href="!#" class="dropdown-item">
+                                        <button type="button" class="btn btn-danger btn-block" (click)="logoutUser()">Logout</button>
+                                    </a>
+                                </div>
+                            </li>
+                        </ul>
+                    </ng-template>
+
                 </div>
             </nav>
         </div>
