@@ -1,9 +1,9 @@
-import { CartItemDetailed } from './../../../interfaces/cart';
 import { ProductService } from 'src/app/services/product.service';
 import { CartService } from 'src/app/services/cart.service';
 import { Component, OnDestroy, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { Subject, takeUntil } from 'rxjs';
+import { CartItemDetailed } from 'src/app/interfaces/cart';
 
 @Component({
   selector: 'app-cart-page',
