@@ -15,7 +15,7 @@
         </div>
     </div>
 </div>
-<section class="invoice p-3" *ngIf="order">
+<section class="invoice p-3 m-2" *ngIf="order">
     <!-- <div class="row container">
         <div class="col-12">
             <h2 class="page-header">
@@ -66,12 +66,13 @@
                         <td>{{ orderItem.quantity }}</td>
                         <td>{{ orderItem.product.priceSell }}</td>
                     </tr>
+                    <tr>
+                        <td colspan="3"><strong>Total: </strong></td>
+                        <td><strong>{{ order!.totalPrice }}</strong></td>
+                    </tr>
                 </tbody>
             </table>
-            
-        </div>
-        <div class="col-md-12" style="float: right">
-            <strong >Total: {{ order!.totalPrice}}</strong>
         </div>
     </div>
+    
 </section>
