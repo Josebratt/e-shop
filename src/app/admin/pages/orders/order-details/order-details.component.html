@@ -16,22 +16,15 @@
     </div>
 </div>
 <section class="invoice p-3 m-2" *ngIf="order">
-    <!-- <div class="row container">
-        <div class="col-12">
-            <h2 class="page-header">
-                <small class="float-right">Fecha Actual: {{ currentDay | date }}</small>
-            </h2>
-        </div>
-    </div> -->
     <div class="row invoice-info">
         <div class="col-sm-6 invoice-col">
             From
             <address>
-                <strong>Venepacif S.A.</strong><br>
-                Av. Principal Carlos Giffoni Local 5a-13, 15 C. 5 A, 14 y 5a<br>
-                Barquisimeto 3001, Lara<br>
-                Phone: (0251) 269-0318<br>
-                Email:
+                <strong>E-Shop S.A.</strong><br>
+                Av. Web<br>
+                Planeta tierra, Sistema Solar<br>
+                Phone: (0123) 456-7890<br>
+                Email: eshop@email.com
             </address>
         </div>
         <div class="col-sm-3 invoice-col">
@@ -46,6 +39,13 @@
         <div class="col-sm-3 invoice-col">
             <b>Orden ID:</b> {{ order.id }}<br>
             <b>Fecha de factura:</b> {{ order.createdAt | date }}<br>
+            <!-- <div class="form-group">
+                <label for="status">Estatus Orden: </label>
+                <select id="status" class="form-control">
+                  <option selected>Choose...</option>
+                  <option>...</option>
+                </select>
+            </div> -->
         </div>
     </div>
     <div class="row">
@@ -64,11 +64,11 @@
                         <td>{{ orderItem.product.sku }}</td>
                         <td>{{ orderItem.product.name }}</td>
                         <td>{{ orderItem.quantity }}</td>
-                        <td>{{ orderItem.product.priceSell }}</td>
+                        <td>{{ orderItem.product.priceSell | currency }}</td>
                     </tr>
                     <tr>
                         <td colspan="3"><strong>Total: </strong></td>
-                        <td><strong>{{ order!.totalPrice }}</strong></td>
+                        <td><strong>{{ order!.totalPrice | currency }}</strong></td>
                     </tr>
                 </tbody>
             </table>

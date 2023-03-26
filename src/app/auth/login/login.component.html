@@ -4,15 +4,17 @@
             <div class="card-header text-center">
                 <div class="d-none d-lg-block">
                     <a href="" class="ms-auto">
-                        <img src="https://res.cloudinary.com/dgn1fahva/image/upload/v1669910447/Venepacific/venepacific_v4orea.jpg"
+                        <img src="https://res.cloudinary.com/dgn1fahva/image/upload/v1679754299/onlineshop_pgbu4a.jpg"
                             alt="Venepacific Logo" class="img-rounded elevation-3"
-                            style="opacity: 0.8; max-width: 150px" />
+                            style="opacity: 0.8; max-width: 110px" />
                         <!-- <span class="text-success font-weight-semi-bold">Venepacific</span> -->
                     </a>
                 </div>
             </div>
             <div class="card-body">
                 <p class="login-box-msg">Sign in to start your session</p>
+                <p>Admin: admin@email.com password: admin</p>
+                <p>User: user@email.com password: user</p>
                 <form [formGroup]="form">
                     <div class="form-group mb-3"> 
                         <input formControlName="email" type="email" class="form-control" placeholder="Email" />
@@ -25,12 +27,12 @@
                             requerido</small>
                     </div>
                     <div class="row">
-                        <div class="col-6">
+                        <!-- <div class="col-6">
                             <div class="icheck-success">
                                 <input type="checkbox" id="remember" />
                                 <label for="remember"> Recuerdame </label>
                             </div>
-                        </div>
+                        </div> -->
                         <div class="col-6">
                             <button type="button" class="btn btn-success btn-block" (click)="onLogin()">
                                 Iniciar sesion
@@ -38,9 +40,9 @@
                         </div>
                     </div>
                 </form>
-                <p class="mb-1 mt-1">
+                <!-- <p class="mb-1 mt-1">
                     <a href="!#">Olvide mi constraseña</a>
-                </p>
+                </p> -->
             </div>
         </div>
     </div>

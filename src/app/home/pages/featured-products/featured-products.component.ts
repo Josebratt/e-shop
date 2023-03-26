@@ -6,16 +6,13 @@ import { Subject, takeUntil } from 'rxjs';
 @Component({
   selector: 'app-featured-products',
   templateUrl: './featured-products.component.html',
-  styleUrls: ['./featured-products.component.css']
+  styleUrls: ['./featured-products.component.css'],
 })
 export class FeaturedProductsComponent implements OnInit, OnDestroy {
-
   products: Product[] = [];
   endsubs$: Subject<unknown> = new Subject();
 
-  constructor(
-    private productService: ProductService
-  ) { }
+  constructor(private productService: ProductService) {}
 
   ngOnInit(): void {
     this._getFeaturedProducts();
@@ -27,9 +24,12 @@ export class FeaturedProductsComponent implements OnInit, OnDestroy {
   }
 
   private _getFeaturedProducts() {
-    this.productService.featuredProduct(5).pipe(takeUntil(this.endsubs$)).subscribe(
-      (data) => this.products = data
-    )
+    this.productService
+      .featuredProduct(5)
+      .pipe(takeUntil(this.endsubs$))
+      .subscribe((data) => {
+        this.products = data;
+        console.log(data);
+      });
   }
-
 }

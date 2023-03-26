@@ -93,18 +93,20 @@
                                             </div>
                                         </div>
                                         <div class="col-md-4">
-                                            <!-- <div class="form-group">
-                                                <div class="custom-control custom-switch">
-                                                    <input formControlName="isFeatured" type="checkbox" class="custom-control-input"
-                                                        id="customSwitch1">
-                                                    <label class="custom-control-label" for="customSwitch1">Es destacado</label>
-                                                </div>
-                                            </div> -->
                                             <div class="form-group">
                                                 <div class="custom-control custom-switch">
-                                                    <input value="{{ product.isFeatured }}" type="checkbox" class="custom-control-input" disabled
-                                                        id="isFeatured">
+                                                    <input type="checkbox" class="custom-control-input" id="isFeatured" 
+                                                        [(ngModel)]="product.isFeatured" [ngModelOptions]="{standalone: true}" disabled>
                                                     <label class="custom-control-label" for="isFeatured">Es Destacado</label>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="col-md-4">
+                                            <div class="form-group">
+                                                <div class="custom-control custom-switch">
+                                                    <input type="checkbox" class="custom-control-input" id="onSale"
+                                                        [(ngModel)]="product.onSale" [ngModelOptions]="{standalone: true}" disabled>
+                                                    <label class="custom-control-label" for="onSale">En Oferta</label>
                                                 </div>
                                             </div>
                                         </div>

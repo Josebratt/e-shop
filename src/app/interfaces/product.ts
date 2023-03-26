@@ -9,6 +9,7 @@ export interface Product {
     category: Category;
     brand?: string;
     isFeatured?: boolean;
+    onSale?: boolean;
     priceBuy?: string;
     priceSell?: string;
     countInStock?: string;

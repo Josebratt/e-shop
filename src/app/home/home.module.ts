@@ -18,6 +18,7 @@ import { CartPageComponent } from './pages/cart-page/cart-page.component';
 import { OrderSummaryComponent } from './pages/order-summary/order-summary.component';
 import { CheckOutComponent } from './pages/check-out/check-out.component';
 import { NgxPaginationModule } from 'ngx-pagination';
+import { OnsaleProductsComponent } from './pages/onsale-products/onsale-products.component';
 
 
 @NgModule({
@@ -33,7 +34,8 @@ import { NgxPaginationModule } from 'ngx-pagination';
     CartIconComponent,
     CartPageComponent,
     OrderSummaryComponent,
-    CheckOutComponent
+    CheckOutComponent,
+    OnsaleProductsComponent
   ],
   imports: [
     CommonModule,

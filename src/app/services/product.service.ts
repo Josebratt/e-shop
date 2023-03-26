@@ -52,9 +52,7 @@ export class ProductService {
    * @param productData 
    * @returns 
    */
-  updateProduct(productData: FormData, id: string): Observable<Product> {
-    console.log('servicio', productData.get('cloudinary_id'));
-    
+  updateProduct(productData: FormData, id: string): Observable<Product> {    
     return this.httpClient.put<Product>(`${this.API_URL}/${id}`, productData);
   }
 
@@ -74,6 +72,15 @@ export class ProductService {
  */
   featuredProduct(count: number): Observable<Product[]> {
     return this.httpClient.get<Product[]>(`${this.API_URL}/featured/${count}`);
+  }
+
+  /**
+   * get all on sale products 
+   * @param count 
+   * @returns 
+   */
+  onSaleProducts(count: number): Observable<Product[]> {
+    return this.httpClient.get<Product[]>(`${this.API_URL}/onsale/${count}`);
   }
   
 }
