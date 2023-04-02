@@ -8,10 +8,9 @@ import { OrderService } from 'src/app/services/order.service';
 @Component({
   selector: 'app-order-details',
   templateUrl: './order-details.component.html',
-  styleUrls: ['./order-details.component.css']
+  styleUrls: ['./order-details.component.css'],
 })
 export class OrderDetailsComponent implements OnInit {
-
   order!: Order;
   endsubs$: Subject<unknown> = new Subject();
   currentDay = Date.now();
@@ -19,7 +18,7 @@ export class OrderDetailsComponent implements OnInit {
   constructor(
     private orderService: OrderService,
     private activatedRoute: ActivatedRoute
-  ) { }
+  ) {}
 
   ngOnInit(): void {
     this._getOrderDetails();
@@ -28,15 +27,9 @@ export class OrderDetailsComponent implements OnInit {
   private _getOrderDetails() {
     const id = this.activatedRoute.snapshot.paramMap.get('id');
     if (id) {
-      this.orderService.getOrder(id).subscribe(
-        data => {
-          this.order = data;
-          console.log(data);
-          
-        }
-      )
+      this.orderService.getOrder(id).subscribe((data) => {
+        this.order = data;
+      });
     }
-
   }
-
 }

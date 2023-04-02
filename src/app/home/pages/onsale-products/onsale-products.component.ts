@@ -29,7 +29,6 @@ export class OnsaleProductsComponent implements OnInit, OnDestroy {
       .pipe(takeUntil(this.endsubs$))
       .subscribe((data) => {
         this.products = data;
-        console.log(data);
       });
   }
 }

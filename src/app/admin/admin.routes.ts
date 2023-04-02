@@ -20,7 +20,7 @@ export const routes: Routes = [
     component: AdminComponent,
     canActivate: [AuthguardGuard],
     children: [
-      { path: '', component: DashboardComponent },
+      { path: 'admin', component: DashboardComponent },
       { path: 'category', component: ListComponent },
       { path: 'category/add', component: AddComponent },
       { path: 'category/add/:id', component: AddComponent },

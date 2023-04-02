@@ -58,7 +58,7 @@ export class LoginComponent implements OnInit {
        this.getId();
        
        if (this.isAdmin == true) {
-        this.router.navigate(['/admin']);
+        this.router.navigate(['/admin/admin']);
        } else {
         this.router.navigate(['/']);
        }
