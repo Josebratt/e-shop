@@ -1,4 +1,4 @@
 export const environment = {
   production: true,
-  apiURL: 'https://venepacific.cyclic.app/api/v1/'
+  apiURL: 'https://b-venepacific.onrender.com/api/v1/'
 };
